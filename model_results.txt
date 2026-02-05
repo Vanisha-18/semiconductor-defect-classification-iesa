@@ -1,0 +1,81 @@
+
+======================================================================
+SEMICONDUCTOR DEFECT CLASSIFICATION - MODEL RESULTS
+IESA DeepTech Hackathon - Phase 1
+======================================================================
+
+DATASET INFORMATION:
+-------------------
+Dataset: WM-811K Silicon Wafer Map Dataset
+Total Images: 902
+Training Images: 630
+Validation Images: 134
+Test Images: 138
+Number of Classes: 9
+Image Size: 224x224 (grayscale)
+
+CLASS DISTRIBUTION:
+------------------
+Center
+Clean
+Donut
+Edge_Local
+Edge_Ring
+Local
+Near_Full
+Other
+Scratch
+
+
+MODEL ARCHITECTURE:
+------------------
+Base Model: MobileNetV2 (alpha=0.75)
+Transfer Learning: Yes (ImageNet pretrained)
+Total Parameters: 1,547,199
+Optimizer: Adam
+Loss Function: Categorical Crossentropy
+
+TRAINING CONFIGURATION:
+----------------------
+Framework: TensorFlow 2.19.0
+Training Platform: Google Colab (GPU: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')])
+Batch Size: 32
+Phase 1 Epochs: 20 (frozen base)
+Phase 2 Epochs: 30 (fine-tuning)
+Data Augmentation: Yes (rotation, flip, zoom, shift)
+
+MODEL PERFORMANCE (TEST SET):
+----------------------------
+Test Accuracy:  56.52%
+Test Precision: 89.66%
+Test Recall:    18.84%
+Test Loss:      1.3341
+
+MODEL SPECIFICATIONS:
+--------------------
+Model Size (H5):    7.52 MB
+Model Size (ONNX):  5.82 MB
+Inference Time:     85.35 ms (average, CPU)
+Input Format:       224x224x1 (grayscale, normalized 0-1)
+Output Format:      Softmax probabilities (9 classes)
+
+EDGE DEPLOYMENT READINESS:
+-------------------------
+✓ Lightweight architecture (MobileNetV2)
+✓ Model size < 15 MB (suitable for edge devices)
+✓ Fast inference time < 100ms
+✓ ONNX format exported (compatible with NXP eIQ)
+✓ Optimized for limited compute resources
+
+FILES GENERATED:
+---------------
+1. best_model.h5 - Trained Keras model
+2. defect_classifier.onnx - ONNX format model
+3. confusion_matrix.png - Confusion matrix visualization
+4. training_history.png - Training curves
+5. sample_images.png - Sample dataset images
+6. model_results.txt - This results file
+
+======================================================================
+Date: 2026-02-04 08:51:14
+======================================================================
